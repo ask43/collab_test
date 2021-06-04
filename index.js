@@ -1,15 +1,15 @@
 const	{ Octokit  } = require("@octokit/rest"),
-			express = require("express"),
-			app = express();
+	express = require("express"),
+	app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/postRequest', function(req,res){
 	const auth = req.body.auth_token,
-				owner = req.body.owner,
-				repo = req.body.repo,
-				username = req.body.username;
+	owner = req.body.owner,
+	repo = req.body.repo,
+	username = req.body.username;
 	try {
 		//Аутентификация
 		const clientAuth = new Octokit ({
