@@ -6,10 +6,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/postRequest', function(req,res){
-	let auth = req.body.auth_token,
-			owner = req.body.owner,
-			repo = req.body.repo,
-			username = req.body.username;
+	const auth = req.body.auth_token,
+				owner = req.body.owner,
+				repo = req.body.repo,
+				username = req.body.username;
 	try {
 		//Аутентификация
 		const clientAuth = new Octokit ({
