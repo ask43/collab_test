@@ -1,18 +1,22 @@
-const	{ Octokit  } = require("@octokit/rest"),
+const {
+	Octokit
+} = require("@octokit/rest"),
 	express = require("express"),
 	app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+	extended: true
+}));
 
-app.post('/postRequest', function(req,res){
+app.post('/postRequest', function (req, res) {
 	const auth = req.body.auth_token,
-	owner = req.body.owner,
-	repo = req.body.repo,
-	username = req.body.username;
+		owner = req.body.owner,
+		repo = req.body.repo,
+		username = req.body.username;
 	try {
 		//Аутентификация
-		const clientAuth = new Octokit ({
+		const clientAuth = new Octokit({
 			auth: auth,
 		});
 		//Отправка приглашения
@@ -24,17 +28,17 @@ app.post('/postRequest', function(req,res){
 		res.send("You've invited " + username);
 	} catch (e) {
 		console.log(e)
-	}	
+	}
 });
-		
+
 function start() {
 	try {
-			app.listen(3000, () => {
+		app.listen(3000, () => {
 			console.log('Server has been started...')
 		})
-		} catch (e) {
-			console.log(e)
-		}
+	} catch (e) {
+		console.log(e)
+	}
 }
 
 start()
